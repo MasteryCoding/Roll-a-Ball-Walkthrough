@@ -550,7 +550,7 @@ public class CameraController : MonoBehaviour
 
   private void Awake() {...}
   private void Start() {...}
-  private void ` {...}
+  private void LateUpdate() {...}
   
   public void Look(Vector2 mouseVector)
   {
@@ -569,7 +569,7 @@ This fixes the camera controls, but now when we rotate the camera, the ball does
 
 ### Move Direction Relative to Camera
 
-When we press forward, we want the ball to move forward from the perspective of the camera.
+When we press W (forward), we want the ball to move forward from the perspective of the camera.
 
 To do this we need to take the local **forward** of the camera, and convert it to world space.
 
