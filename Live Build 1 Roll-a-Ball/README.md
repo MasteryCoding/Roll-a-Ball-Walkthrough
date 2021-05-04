@@ -1,11 +1,4 @@
-# Roll-a-Ball-Walkthrough
-
-A walkthrough of the Roll-a-Ball Project by Mastery Coding
-
-Technologies:
-
-* Unity
-* C#
+# Live Build 1: Roll-a-Ball
 
 ## Step 1: Introductions
 
@@ -19,7 +12,8 @@ Download and import the [RAB_Assets.unitypackage](./Resources/RAB_Assets.unitypa
 
 ![Import](./Resources/Import.png)
 
-Download Skyboxes from Unity Asset store: <https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576>
+Download Skyboxes from Unity Asset store.
+Recommended Package: <https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576>
 
 ![Skyboxes](./Resources/Skyboxes.png)
 
@@ -33,7 +27,7 @@ The RAB Asset Pack is from Mastery Coding and free to use for any portfolio proj
 
 This asset pack comes with three folders.
 
-**Materials**: Contains the material and texture for all the models in the pack.
+**Materials**: Contains the color data for all the models in the pack.
 
 ![Materials](./Resources/Materials.png)
 
@@ -47,7 +41,7 @@ This asset pack comes with three folders.
 
 Create a new Folder called `Resources` and drag the `Customizeable Skybox`, `Models`, and `Materials` folders inside.
 
-Your [Project Window](https://docs.unity3d.com/Manual/ProjectView.html) should look like this:
+Your project window should look like this:
 
 ![Organized Project](./Resources/OrganizedProject.png)
 
@@ -59,13 +53,13 @@ You will be working inside the Prefabs folder mostly.
 
 ![Platforms](./Resources/Platforms.png)
 
-Platforms make up the ground that the character travels on. They use [Mesh Collider](https://docs.unity3d.com/Manual/class-MeshCollider.html)s.
+Platforms make up the ground that the character travels on. They use **Mesh Colliders**.
 
 #### Terrain
 
 ![Terrain](./Resources/Terrain.png)
 
-Terrain is used to spice up the scene so the ground is not always flat. They also use [Mesh Collider](https://docs.unity3d.com/Manual/class-MeshCollider.html)s.
+Terrain is used to spice up the scene so the ground is not always flat. They also use **Mesh Colliders**.
 
 #### Decor
 
@@ -77,23 +71,23 @@ Decor can be used as an obstacle, or to make the scene prettier. There are three
 2. Rocks
 3. Clouds
 
-All of these have [Mesh Collider](https://docs.unity3d.com/Manual/class-MeshCollider.html)s except for the clouds.
+All of these have **Mesh Colliders** except for the clouds.
 
 #### Items
 
 ![Crate](./Resources/Crate.png)
 
-Crates are items you can put in the scene. The crate Prefab has a **Box Collider** and a non-kinematic [Rigidbody](https://docs.unity3d.com/Manual/class-Rigidbody.html).
+Crates are items you can put in the scene. The crate Prefab has a **Box Collider** and a non-kinematic **Rigidbody**.
 
 ## Step 3: Set Up Scene
 
 * Rename the Sample Scene to `Level 1`
-* Open the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html)'s Environment tab and set desired Skybox. *Window > Rendering > Lighting*
-* Pin the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html) to the inspector.
+* Open the **Lighting Window**'s Environment tab and set desired Skybox. *Window > Rendering > Lighting*
+* Pin the lighting window to the inspector.
 
 ![Lighting Skybox](./Resources/LightingSkybox.png)
 
-* Turn the Skybox off in the scene view.
+* Turn the skybox off in the scene view.
 
 ![Toggle Skybox Off](./Resources/SkyboxOff.png)
 
@@ -121,7 +115,7 @@ Create Empty GameObjects inside `Level` to group objects together. It should loo
 
 ## Step 5: Set Up Lighting
 
-In the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html)'s **Scene Tab**, create new lighting settings.
+In the lighting window's **Scene Tab**, create new lighting settings.
 
 Set the following settings:
 
@@ -141,11 +135,6 @@ Return to Lighting > Environment and set:
   * Intensity Multiplier: ~.25
   * Resolution: 128
   * Compression: Uncompressed
-
-On the **Directional Light** GameObject in the inspector:
-
-* Tweak color to whatever looks good.
-* Normal Bias: 0
 
 Make any other environment tweaks to your scene, then click `Generate Lighting` and wait for the lightmaps to bake.
 
@@ -186,9 +175,9 @@ public class Movement : MonoBehaviour
 
 ### Get RigidBody
 
-1. Create a private [RigidBody](https://docs.unity3d.com/Manual/class-Rigidbody.html) property named rb
-2. Import the Player [Rigidbody](https://docs.unity3d.com/Manual/class-Rigidbody.html) inside the [Awake()](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html) method.
-3. Require the [Rigidbody](https://docs.unity3d.com/Manual/class-Rigidbody.html) component.
+1. Create a private Rigidbody property named rb
+2. Import the Player **Rigidbody** inside the `Awake()` method.
+3. Require the Rigidbody component.
 
 ```cs
 // Movement.cs
@@ -205,7 +194,7 @@ public class Movement : MonoBehaviour
 
 ### Configure Player GameObject
 
-1. Drag `Movement.cs` Script onto the `Ball` GameObject.
+1. Drag Movement Script onto the `Ball` GameObject.
 2. Add a Rigidbody
 3. Add a Sphere Collider
 4. Set Tag to `Player`
@@ -217,7 +206,7 @@ public class Movement : MonoBehaviour
 Add a `Move()` Method to the Ball that:
 
 1. Takes in a movement Vector.
-2. Multiplies it by a [serialized](https://docs.unity3d.com/ScriptReference/SerializeField.html) acceleration property.
+2. Multiplies it by a serialized acceleration property.
 3. Uses the result to add an acceleration vector to the Rigidbody.
 
 ```cs
@@ -245,16 +234,16 @@ public class Movement : MonoBehaviour
   }
 ```
 
-**Note**: By using [ForceMode.Acceleration](https://docs.unity3d.com/ScriptReference/ForceMode.html), we can change the mass of the ball later without it affecting its movement.
+**Note**: By using `ForceMode.Acceleration`, we can change the mass of the ball later without it affecting its movement.
 
-**Note**: Recall that [AddForce()](https://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html) does not require multiplying by Time.deltaTime.
+**Note**: Recall that AddForce() does not require multiplying by Time.deltaTime.
 
 ### Set Up Input Handler
 
 1. Create an empty GameObject called `GameLogic` in the Hierarchy.
 2. Attach the *InputHandler.cs* script to it.
 3. Remove all unnecessary logic.
-4. Create and [Awake()](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html) method and get a reference to the player with [GameObject.FindWithTag()](https://docs.unity3d.com/ScriptReference/GameObject.FindWithTag.html)
+4. Create and `Awake()` method and get a reference to the player with `GameObject.FindGameObjectWithTag()`.
 5. Extract the Movement component from the player.
 
 ```cs
@@ -266,7 +255,7 @@ public class InputHandler : MonoBehaviour
   private Movement playerMovement;
   private void Awake()
   {
-    GameObject player = GameObject.Find("Player");
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
     if (player == null)
     {
       Debug.LogError("No GameObject with 'Player' tag in scene.");
@@ -284,11 +273,11 @@ public class InputHandler : MonoBehaviour
 
 ### Get Axes
 
-Since we're working with forces for movement, we will be using [FixedUpdate()](https://docs.unity3d.com/ScriptReference/PlayerLoop.FixedUpdate.html)
+Since we're working with forces for movement, we will be using `FixedUpdate()`
 
-1. Create a [FixedUpdate()](https://docs.unity3d.com/ScriptReference/PlayerLoop.FixedUpdate.html) method inside the `InputHandler` class.
-2. Capture the [Horizontal and Vertical Axes](https://docs.unity3d.com/ScriptReference/Input.GetAxis.html) in floats called `x` and `y`.
-3. Call the `Move()` method with a new [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html) using x for x and y for z movement.
+1. Create a `FixedUpdate()` method inside the `InputHandler` class.
+2. Capture the Horizontal and Vertical axes in floats called `x` and `y`.
+3. Call the `Move()` method with a new `Vector3` using x for x and y for z movement.
 
 ```cs
 // InputHandler.cs
@@ -315,7 +304,7 @@ In your project,
 If it works, great! If not, use this checklist for troubleshooting:
 
 1. Your console isn't printing any error messages.
-2. The `Ball` GameObject has a movement script attached and is tagged `player`.
+2. The `Ball` gameobject has a movement script attached and is tagged `player`.
 3. Movement has an acceleration of ~600.
 4. Your *InputHandler.cs* script is attached to the active `GameLogic` object in the scene.
 5. Your *Game View* is the active window.
@@ -341,8 +330,7 @@ An easy way to do this, instead of moving the camera directly, is to parent the 
 
 1. Create an Empty GameObject called `Camera Pivot` and make the `Main Camera` a child.
 2. Zero the `Main Camera` position and rotation relative to the pivot.
-3. Set the `Main Camera` position.z field in the transform to -15. This gives the camera distance away from the ball.
-4. Set the `Main Camera` position.y field in the transform to 4. This makes the camera sit above the ball.
+3. Set the `Main Camera` position.z field in the transform to -5.
 
 ![Camera Pivot](Resources/CameraPivot.gif)
 
@@ -392,8 +380,8 @@ Now we just need to get the mouse input and rotate the camera pivot accordingly.
 In the *CameraController.cs* script:
 
 1. Since we're using the mouse as axis input, lock and hide the cursor in `Start()`.
-2. Define a [serialized](https://docs.unity3d.com/ScriptReference/SerializeField.html) float called `lookSensitivity` to use in the inspector.
-3. Define a ``` method that:
+2. Define a serialized float called `lookSensitivity` to use in the inspector.
+3. Define a `LateUpdate()` method that:
    1. Sets the CameraPivot's position to the Player's position.
    2. Makes the camera look at the Player.
 4. Define a public `Look()` method that takes in a `Vector2` called `mouseVector`.
@@ -416,7 +404,7 @@ public class CameraController : MonoBehaviour
     Cursor.visible = false;
   }
 
-  private void `
+  private void LateUpdate()
   {
     // Sets camera to player position right before each frame.
     transform.position = player.transform.position;
@@ -439,8 +427,8 @@ public class CameraController : MonoBehaviour
 
 In the *InputHandler.cs* script:
 
-1. Create a [serialized](https://docs.unity3d.com/ScriptReference/SerializeField.html) CameraController property called `camControl`.
-2. Define a [LateUpdate()](https://docs.unity3d.com/ScriptReference/MonoBehaviour.LateUpdate.html) method, since we are moving the camera.
+1. Create a serialized CameraController property called `camControl`.
+2. Define a LateUpdate() method, since we are moving the camera.
 3. Get the "Mouse X" and "Mouse Y" axes.
 4. Call the `Look()` method with the x and y values.
 
@@ -470,7 +458,7 @@ public class InputHandler : MonoBehaviour
 
 In your scene,
 
-1. Attach the `CameraController` instance in the `Camera Pivot` to the `InputHandler` component of the `Game Logic` GameObject.
+1. Attach the `CameraController` instance in the `Camera Pivot` to the `InputHandler` component of the `Game Logic` gameobject.
 2. Adjust look sensitivity. ~5-10 is a good amount.
 
 ![Wonky Controls](Resources/WonkyControls.gif)
@@ -480,100 +468,36 @@ You'll probably notice that this does not feel good. This is because:
 1. The camera clips through the floor and other objects.
 2. The Mouse Y axis is inverted.
 
-To solve this, we can can:
-
-Invert the Mouse Y axis by making it negative.
+To solve this, we can can limit the X-Rotation between 0 and 90 degrees and invert the Mouse Y axis.
 
 ```cs
 // InputHandler.cs
-void LateUpdate()
-{
-  // Gets Mouse Axes
-  float mouseX = Input.GetAxis("Mouse X");
-  float mouseY = -Input.GetAxis("Mouse Y"); // Inverted
-
-  // Sends Mouse Axes to Look() method
-  camControl.Look(new Vector2(mouseX, mouseY));
-}
-```
-
-1. Define [serialized](https://docs.unity3d.com/ScriptReference/SerializeField.html) minX and maxX rotation variables.
-2. Clamp the rotation between those two angles.
-
-```cs
-public class CameraController : MonoBehaviour
-{
-  [SerializeField] private float lookSensitivity;
-  [SerializeField] float minX = 5;
-  [SerializeField] float maxX = 60;
-  private Camera cam;
-  private GameObject player;
-
-  private void Awake() {...}
-  private void Start() {...}
-  private void ` {...}
-  
-  public void Look(Vector2 mouseVector)
-  {
-    // Clamp the xRot between MIN and MAX angles
-    float xRot = transform.eulerAngles.x + mouseVector.y * lookSensitivity;
-    xRot = Mathf.Clamp(xRot, minX, maxX);
-
-    float yRot = transform.eulerAngles.y + mouseVector.x * lookSensitivity;
-
-    transform.eulerAngles = new Vector3(xRot, yRot, 0);
-  }
-}
-```
-
-This fixes the camera controls, but now when we rotate the camera, the ball doesn't move where we want it to.
-
-### Move Direction Relative to Camera
-
-When we press forward, we want the ball to move forward from the perspective of the camera.
-
-To do this we need to take the local **forward** of the camera, and convert it to world space.
-
-The [transform.TransformDirection()](https://docs.unity3d.com/ScriptReference/Transform.TransformDirection.html) method makes this very simple.
-
-```cs
-// Movement
 private void FixedUpdate()
 {
   // Get Movement Input Axes 
   float x = Input.GetAxis("Horizontal");
-  float y = Input.GetAxis("Vertical");
-
-  // Calculate global coordinates from camera perspective
-  Vector3 relative = camControl.transform.TransformDirection(new Vector3(x, 0, y));
+  float y = -Input.GetAxis("Vertical"); // Inverted
 
   // Send inputs 
-  playerMovement.Move(relative);
+  playerMovement.Move(new Vector3(x, 0, y));
 }
 ```
-
-But now we have another issue. When we angle the camera up along the X axis, the forward vector is pushing the ball into the ground. But We want all of our movement to calculate on the XZ plane.
-
-### Flatten Movement to XZ plane
-
-To fix this, we can flatten the camera on the x axis temporarily, calculate the movement vector, and then set the x rotation back.
 
 ```cs
-private void FixedUpdate()
+// CameraController.cs
+public void Look(Vector2 mouseVector)
 {
-  // Get Movement Input Axes
-  float x = Input.GetAxis("Horizontal");
-  float y = Input.GetAxis("Vertical");
+  // Clamp the xRot between MIN and MAX angles
+  float xRot = transform.eulerAngles.x + mouseVector.y * lookSensitivity;
+  xRot = Mathf.Clamp(xRot, MIN_X_ROT, MAX_X_ROT);
 
-  // Calculate global coordinates from camera perspective
-  Vector3 tempRot = camControl.transform.eulerAngles; // Store rotation
-  camControl.transform.eulerAngles = new Vector3(0, tempRot.y, 0); // Set x rotation to zero 
-  Vector3 relative = camControl.transform.TransformDirection(new Vector3(x, 0, y)); // Calculate movement vector
-  camControl.transform.eulerAngles = tempRot; // Set rotationback to original
+  float yRot = transform.eulerAngles.y + mouseVector.x * lookSensitivity;
 
-  // Send inputs
-  playerMovement.Move(relative);
+  transform.eulerAngles = new Vector3(xRot, yRot, 0);
 }
 ```
 
-**Note**: Even though we are rotating the transform of the camera briefly, it will be set back before the frame renders. The temporary rotation is not visible to the player.
+## Polish
+
+1. Clipping Pane
+2. Uniform Motion Vector
