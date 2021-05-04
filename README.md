@@ -1,17 +1,56 @@
 # Roll-a-Ball-Walkthrough
 
+## Table Of Contents
+
+- [Roll-a-Ball-Walkthrough](#roll-a-ball-walkthrough)
+  - [Step 1: Introductions](#step-1--introductions) (5 Minutes)
+  - [Step 2: Gather Assets](#step-2--gather-assets) (10 Minutes)
+    - [RAB_Assets](#rab-assets)
+    - [Organize Project](#organize-project)
+    - [Prefab List](#prefab-list)
+      - [Platforms](#platforms)
+      - [Terrain](#terrain)
+      - [Decor](#decor)
+      - [Items](#items)
+  - [Step 3: Set Up Scene](#step-3--set-up-scene) (5 Minutes)
+  - [Step 4: Create A Level](#step-4--create-a-level) (20 Minutes)
+    - [Organize Hierarchy](#organize-hierarchy)
+  - [Step 5: Set Up Lighting](#step-5--set-up-lighting) (15 Minutes)
+  - [Step 6: Controlling Movement](#step-6--controlling-movement) (30 Minutes)
+    - [Prep](#prep)
+    - [Get RigidBody](#get-rigidbody)
+    - [Configure Player GameObject](#configure-player-gameobject)
+    - [Move That Ball](#move-that-ball)
+    - [Set Up Input Handler](#set-up-input-handler)
+    - [Get Axes](#get-axes)
+    - [Test Movement](#test-movement)
+    - [Create a Player Prefab](#create-a-player-prefab)
+  - [Step 7: Controlling the Camera](#step-7--controlling-the-camera) (30 Minutes)
+    - [Create a Camera Pivot](#create-a-camera-pivot)
+    - [CameraController Script Setup](#cameracontroller-script-setup)
+    - [Mouse Look](#mouse-look)
+    - [Test MouseLook](#test-mouselook)
+    - [Move Direction Relative to Camera](#move-direction-relative-to-camera)
+    - [Flatten Movement to XZ plane](#flatten-movement-to-xz-plane)
+  - [Closing Thoughts: Controlling the Camera](#step-7--controlling-the-camera) (Remaining Time)
+
 A walkthrough of the Roll-a-Ball Project by Mastery Coding
 
 Technologies:
 
-* Unity
-* C#
+- Unity
+- C#
 
 ## Step 1: Introductions
 
-1. Explain what the class will be building today and emphasize that they can interrupt and ask questions if they're falling behind.
-2. Show off finished project. [TODO: Include Link]
-3. Create a new Unity Project named `Roll-a-Ball`.
+In this walkthrough, we will build a fresh take on the Roll-a-Ball project for Unity Beginners.
+
+First, we'll import assets and make a level.
+Then, we'll build a third-person character controller where the WASD keys control the movement, and the mouse controls the camera.
+
+Once that's done, we'll have a solid foundation to make a full game out of.
+
+Let's start by creating a new Unity Project called "Roll-a-Ball" and entering our editor.
 
 ## Step 2: Gather Assets
 
@@ -87,13 +126,13 @@ Crates are items you can put in the scene. The crate Prefab has a **Box Collider
 
 ## Step 3: Set Up Scene
 
-* Rename the Sample Scene to `Level 1`
-* Open the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html)'s Environment tab and set desired Skybox. *Window > Rendering > Lighting*
-* Pin the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html) to the inspector.
+- Rename the Sample Scene to `Level 1`
+- Open the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html)'s Environment tab and set desired Skybox. *Window > Rendering > Lighting*
+- Pin the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html) to the inspector.
 
 ![Lighting Skybox](./Resources/LightingSkybox.png)
 
-* Turn the Skybox off in the scene view.
+- Turn the Skybox off in the scene view.
 
 ![Toggle Skybox Off](./Resources/SkyboxOff.png)
 
@@ -125,27 +164,27 @@ In the [Lighting Window](https://docs.unity3d.com/Manual/lighting-window.html)'s
 
 Set the following settings:
 
-* Lightmapper: Progressive GPU (If computer has a good graphics card)
-* Direct Samples: 16
-* Indirect Samples: 200
-* Environment Samples: 160
-* Compress Lightmaps: False
-* Ambient Occlusion: True
-* Auto Generate: False
+- Lightmapper: Progressive GPU (If computer has a good graphics card)
+- Direct Samples: 16
+- Indirect Samples: 200
+- Environment Samples: 160
+- Compress Lightmaps: False
+- Ambient Occlusion: True
+- Auto Generate: False
 
 Return to Lighting > Environment and set:
 
-* Environment Lighting
-  * Intensity Multiplier: ~1
-* Environment Reflections
-  * Intensity Multiplier: ~.25
-  * Resolution: 128
-  * Compression: Uncompressed
+- Environment Lighting
+  - Intensity Multiplier: ~1
+- Environment Reflections
+  - Intensity Multiplier: ~.25
+  - Resolution: 128
+  - Compression: Uncompressed
 
 On the **Directional Light** GameObject in the inspector:
 
-* Tweak color to whatever looks good.
-* Normal Bias: 0
+- Tweak color to whatever looks good.
+- Normal Bias: 0
 
 Make any other environment tweaks to your scene, then click `Generate Lighting` and wait for the lightmaps to bake.
 
@@ -153,7 +192,7 @@ Make any other environment tweaks to your scene, then click `Generate Lighting` 
 
 A lot of the settings that were tweaked, are so the lighting generates faster. When we build our game for publishing, we can turn these values up and get a better looking scene.
 
-Show Baked Lightmaps briefly. These will be covered in a later chapter.
+**Note**: After `Generate Lighting` finishes. Take a look at the Baked Lightmaps. These are covered later in the course.
 
 ## Step 6: Controlling Movement
 
@@ -165,8 +204,8 @@ Take the `Ball` model from *Assets > Resources > Models > Ball* and drag it into
 
 Create a new folder in `Assets` called `Scripts`
 
-* *Movement.cs*
-* *InputHandler.cs*
+- *Movement.cs*
+- *InputHandler.cs*
 
 ![Scripts](./Resources/Scripts.png)
 
@@ -577,3 +616,11 @@ private void FixedUpdate()
 ```
 
 **Note**: Even though we are rotating the transform of the camera briefly, it will be set back before the frame renders. The temporary rotation is not visible to the player.
+
+And that's it! We've created a level and a fully functional character controller.
+
+## Closing Thoughts
+
+Now that you have a base level, try adding to it. Think about what this project is "missing" for it to be a full game.
+
+Be creative with the assets you have available and make something you're proud to show off!
