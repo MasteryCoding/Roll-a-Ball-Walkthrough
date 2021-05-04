@@ -1,5 +1,12 @@
 # Roll-a-Ball-Walkthrough
 
+A walkthrough of the Roll-a-Ball Project by Mastery Coding
+
+Technologies:
+
+- Unity
+- C#
+
 ## Table Of Contents
 
 - [Roll-a-Ball-Walkthrough](#roll-a-ball-walkthrough)
@@ -33,13 +40,6 @@
     - [Move Direction Relative to Camera](#move-direction-relative-to-camera)
     - [Flatten Movement to XZ plane](#flatten-movement-to-xz-plane)
   - [Closing Thoughts: Controlling the Camera](#step-7--controlling-the-camera) (Remaining Time)
-
-A walkthrough of the Roll-a-Ball Project by Mastery Coding
-
-Technologies:
-
-- Unity
-- C#
 
 ## Step 1: Introductions
 
