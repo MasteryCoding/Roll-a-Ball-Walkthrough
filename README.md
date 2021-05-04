@@ -62,7 +62,7 @@ Download Skyboxes from Unity Asset store: <https://assetstore.unity.com/packages
 
 ![Skyboxes](./Resources/Skyboxes.png)
 
-Explain that Skyboxes change the background of the scene. You can drag any of these into the sky of the scene to change the skybox.
+Skyboxes change the background of the scene. You can drag any of these into the sky of the scene to change the skybox.
 
 ![Syboxes Project](./Resources/SkyboxesProjectView.png)
 
