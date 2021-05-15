@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
   private void Awake()
   {
     rb = GetComponent<Rigidbody>();
+    jumpTime = Time.time;
   }
 
   public void Move(Vector3 moveDirection) {
