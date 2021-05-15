@@ -33,8 +33,9 @@ public class InputHandler : MonoBehaviour
     Vector3 relative = camControl.transform.TransformDirection(new Vector3(x, 0, y));
     camControl.transform.eulerAngles = tempRot;
 
-    // Send inputs
+     // Send inputs
     playerMovement.Move(relative);
+    if (Input.GetAxis("Jump") > 0) playerMovement.Jump();
   }
 
   void LateUpdate()
