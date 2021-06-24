@@ -432,7 +432,7 @@ In the *CameraController.cs* script:
 
 1. Since we're using the mouse as axis input, lock and hide the cursor in `Start()`.
 2. Define a [serialized](https://docs.unity3d.com/ScriptReference/SerializeField.html) float called `lookSensitivity` to use in the inspector.
-3. Define a ``` method that:
+3. Define a `LateUpdate()` method that:
    1. Sets the CameraPivot's position to the Player's position.
    2. Makes the camera look at the Player.
 4. Define a public `Look()` method that takes in a `Vector2` called `mouseVector`.
@@ -455,7 +455,7 @@ public class CameraController : MonoBehaviour
     Cursor.visible = false;
   }
 
-  private void `
+  private void LateUpdate()
   {
     // Sets camera to player position right before each frame.
     transform.position = player.transform.position;
